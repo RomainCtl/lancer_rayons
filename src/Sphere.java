@@ -119,9 +119,11 @@ public class Sphere
                     finale = Couleur.add(finale, Kd.mul(nl).mul(lampe.getCouleur()));
 
                     /// Eclairement Spéculaire
-                    // Equation de Phong
-                    float rl = r.dot(l);
-                    if (rl > 0) finale = Couleur.add(finale, Kd.mul( (float) Math.pow(rl, this.Ns) ).mul(lampe.getCouleur()));
+                    // Equation de Blinn
+                    Vecteur h = l.add(sub_v);
+                    h.normaliser();
+                    float hn = h.dot(n);
+                    if (hn > 0) finale = Couleur.add(finale, Kd.mul( (float) Math.pow(hn, this.Ns) ).mul(lampe.getCouleur()));
                 }
             }
         }
