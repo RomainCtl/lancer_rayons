@@ -133,10 +133,15 @@ public class Sphere
             // chercher quel objet de la scène le rencontre au plus proche
             if (scene.ChercherIntersection(reflet, this)) {
                 // il y a un objet
-                finale =  finale.add( reflet.getObjet().Phong(scene, reflet, profondeur-1).mul(this.Ks) );
+                Couleur couleur = reflet.getObjet().Phong(scene, reflet, profondeur-1).mul(this.Ks);
+
+                // moduler cette couleur par la traversé de la brume
+                float k = reflet.getDistance() / 4.0f;
+                if (k > 1.0f) k = 1.0f;
+                finale = finale.add( couleur.mul(1.0f-k).add( Constantes.BRUME.mul(k) ) );
             } else {
                 // c'est le ciel
-                finale = finale.add( reflet.Ciel().mul(this.Ks) );
+                finale = finale.add( Constantes.BRUME.mul(this.Ks) );
             }
         }
 

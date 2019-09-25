@@ -86,10 +86,15 @@ public class Lancer extends JPanel implements ComponentListener
         // chercher quel objet de la scène le rencontre au plus près
         if (scene.ChercherIntersection(initial, null)) {
             // il y a un objet
-            return initial.getObjet().Phong(scene, initial, Constantes.MAX_REFLETS);
+            Couleur couleur = initial.getObjet().Phong(scene, initial, Constantes.MAX_REFLETS);
+
+            // moduler cette couleur par la traversé de la brume
+            float k = (initial.getDistance() -2) / 2.0f;
+            if (k > 1.0f) k = 1.0f;
+            return couleur.mul(1.0f-k).add( Constantes.BRUME.mul(k) );
         } else {
-            // c'est le ciel
-            return initial.Ciel();
+            // c'est la couleur de la brume
+            return Constantes.BRUME;
         }
     }
 

@@ -14,7 +14,7 @@ public final class Constantes
     public static final float CHAMP = 0.25f;
 
     // scène à dessiner dans le canvas
-    public static final String NOM_SCENE = "scenes/scene2.txt";
+    public static final String NOM_SCENE = "scenes/scene4.txt";
 
     // dimensions (initiales) et nom du fichier PNG de sortie
     public static final int LARGEUR_IMAGE = 800;
@@ -23,4 +23,7 @@ public final class Constantes
 
     // nombre de rayons réfléchis successifs
     public static final int MAX_REFLETS = 5;
+
+    // couleur de la brule
+    public static final Couleur BRUME = new Couleur(0.9, 0.9, 0.9);
 }
