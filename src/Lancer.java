@@ -140,14 +140,29 @@ public class Lancer extends JPanel implements ComponentListener
             if (task.progress(ye)) break;
             // passer en revue tous les pixels de la ligne
             for (int xe = 0; xe < largeur; xe++) {
+                // couleur moyenne
+                Couleur moyenne = new Couleur(0, 0, 0);
+
+                for (int i=0 ; i<Constantes.ANTIALIAS ; i++) {
+                    for (int j=0 ; j<Constantes.ANTIALIAS ; j++) {
+                        moyenne = moyenne.add(
+                            CouleurPixel(
+                                xe + (i + 0.5f)/ Constantes.ANTIALIAS,
+                                ye + (j + 0.5f)/ Constantes.ANTIALIAS,
+                                Constantes.MAX_REFLETS
+                            )
+                        );
+                    }
+                }
+
                 // couleur du pixel
-                Couleur couleur = CouleurPixel(xe, ye, Constantes.MAX_REFLETS);
+                moyenne = moyenne.div(Constantes.ANTIALIAS*Constantes.ANTIALIAS);
 
                 // correction gamma
-                couleur = couleur.correctionGamma(0.8f);
+                moyenne = moyenne.correctionGamma(0.8f);
 
                 // dessiner le pixel de cette couleur
-                drawPixel(couleur, xe,ye);
+                drawPixel(moyenne, xe,ye);
             }
         }
 

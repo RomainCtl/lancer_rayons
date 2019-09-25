@@ -23,4 +23,6 @@ public final class Constantes
 
     // nombre de rayons réfléchis successifs
     public static final int MAX_REFLETS = 5;
+
+    public static final int ANTIALIAS = 4;
 }
