@@ -1,0 +1,419 @@
+objet 1
+	centre 3.25 -3.50 11.75
+	rayon 0.78
+	Kd 0.02 0.93 0.31
+	Ks 0.82 0.83 0.63
+	Ns 210
+
+objet 2
+	centre -3.50 0.75 11.25
+	rayon 0.22
+	Kd 0.63 0.65 0.70
+	Ks 0.22 0.76 0.84
+	Ns 135
+
+objet 3
+	centre -0.25 2.50 10.00
+	rayon 0.27
+	Kd 0.69 0.45 0.72
+	Ks 0.79 0.36 0.17
+	Ns 285
+
+objet 4
+	centre 0.50 3.50 11.50
+	rayon 0.91
+	Kd 0.12 0.87 0.61
+	Ks 0.44 0.91 0.98
+	Ns 210
+
+objet 5
+	centre 0.00 -1.25 11.25
+	rayon 0.57
+	Kd 0.59 0.96 0.43
+	Ks 0.22 0.12 0.58
+	Ns 345
+
+objet 6
+	centre 1.25 2.25 11.75
+	rayon 0.93
+	Kd 0.94 0.48 0.57
+	Ks 0.60 0.80 0.79
+	Ns 270
+
+objet 7
+	centre 2.50 3.00 12.25
+	rayon 0.72
+	Kd 0.44 0.47 0.47
+	Ks 0.15 0.79 0.89
+	Ns 165
+
+objet 8
+	centre 3.00 -1.50 10.50
+	rayon 0.24
+	Kd 0.78 0.06 0.13
+	Ks 0.62 0.91 0.78
+	Ns 120
+
+objet 9
+	centre -2.25 -1.00 12.25
+	rayon 1.14
+	Kd 0.15 0.26 0.78
+	Ks 0.63 0.81 0.64
+	Ns 120
+
+objet 10
+	centre -3.25 3.25 12.25
+	rayon 0.19
+	Kd 0.57 0.21 0.91
+	Ks 0.44 0.45 0.97
+	Ns 165
+
+objet 11
+	centre -2.75 -1.50 13.00
+	rayon 0.17
+	Kd 0.55 0.81 0.13
+	Ks 0.99 0.33 0.40
+	Ns 195
+
+objet 12
+	centre 2.75 2.25 12.25
+	rayon 0.27
+	Kd 0.77 0.16 0.58
+	Ks 0.04 0.07 0.52
+	Ns 360
+
+objet 13
+	centre 1.50 3.25 12.50
+	rayon 0.25
+	Kd 0.66 0.66 0.34
+	Ks 0.45 0.53 0.13
+	Ns 195
+
+objet 14
+	centre -1.25 2.75 11.25
+	rayon 1.10
+	Kd 0.09 0.53 0.02
+	Ks 0.30 0.55 0.72
+	Ns 375
+
+objet 15
+	centre 2.00 -1.75 10.25
+	rayon 0.49
+	Kd 0.50 0.97 0.71
+	Ks 0.19 0.85 0.64
+	Ns 195
+
+objet 16
+	centre 3.75 1.00 12.75
+	rayon 1.16
+	Kd 0.26 0.26 0.58
+	Ks 0.56 0.02 0.57
+	Ns 240
+
+objet 17
+	centre 2.25 -2.75 11.00
+	rayon 0.59
+	Kd 0.09 0.85 0.86
+	Ks 0.70 0.12 0.24
+	Ns 165
+
+objet 18
+	centre -2.50 2.75 11.75
+	rayon 0.98
+	Kd 0.37 0.10 0.13
+	Ks 0.57 0.71 0.32
+	Ns 120
+
+objet 19
+	centre 2.25 -2.75 12.00
+	rayon 0.15
+	Kd 0.40 0.06 0.96
+	Ks 0.76 0.93 0.47
+	Ns 210
+
+objet 20
+	centre -2.00 2.25 12.75
+	rayon 1.00
+	Kd 0.31 0.95 0.57
+	Ks 0.84 0.92 0.14
+	Ns 135
+
+objet 21
+	centre 1.25 3.00 10.25
+	rayon 0.52
+	Kd 0.01 0.19 1.00
+	Ks 0.09 0.31 0.05
+	Ns 375
+
+objet 22
+	centre -3.75 -3.50 10.75
+	rayon 0.40
+	Kd 0.43 0.17 0.44
+	Ks 0.04 0.00 0.20
+	Ns 90
+
+objet 23
+	centre 2.00 0.75 13.00
+	rayon 0.57
+	Kd 0.36 0.76 0.49
+	Ks 0.72 0.98 0.50
+	Ns 195
+
+objet 24
+	centre 3.00 -2.25 12.50
+	rayon 0.74
+	Kd 0.78 0.01 0.40
+	Ks 0.24 0.15 0.18
+	Ns 90
+
+objet 25
+	centre -3.25 1.00 11.75
+	rayon 0.69
+	Kd 0.38 0.87 0.17
+	Ks 0.02 0.23 0.21
+	Ns 240
+
+objet 26
+	centre 1.25 2.00 12.25
+	rayon 1.17
+	Kd 0.05 0.76 0.63
+	Ks 0.25 0.34 0.28
+	Ns 360
+
+objet 27
+	centre 3.25 -2.75 10.00
+	rayon 0.74
+	Kd 0.40 0.32 0.43
+	Ks 0.02 0.89 0.31
+	Ns 120
+
+objet 28
+	centre 3.50 -1.00 12.75
+	rayon 0.87
+	Kd 0.69 0.88 0.56
+	Ks 0.25 0.46 0.15
+	Ns 180
+
+objet 29
+	centre -2.75 1.25 12.75
+	rayon 0.93
+	Kd 0.68 0.79 0.51
+	Ks 0.30 0.67 0.71
+	Ns 255
+
+objet 30
+	centre 2.50 1.00 10.25
+	rayon 0.40
+	Kd 0.44 0.49 0.11
+	Ks 0.49 0.39 0.08
+	Ns 90
+
+objet 31
+	centre 3.00 0.00 10.75
+	rayon 0.45
+	Kd 0.77 0.49 0.94
+	Ks 0.62 0.84 0.71
+	Ns 345
+
+objet 32
+	centre -1.75 -2.75 11.00
+	rayon 0.15
+	Kd 0.69 0.39 0.52
+	Ks 0.19 0.68 0.22
+	Ns 135
+
+objet 33
+	centre -0.50 1.75 11.25
+	rayon 0.98
+	Kd 0.02 0.16 1.00
+	Ks 0.35 0.97 0.13
+	Ns 120
+
+objet 34
+	centre 3.00 1.25 11.50
+	rayon 0.96
+	Kd 0.27 0.69 0.84
+	Ks 0.32 0.65 0.91
+	Ns 375
+
+objet 35
+	centre -2.00 1.00 10.75
+	rayon 0.64
+	Kd 0.24 0.01 0.17
+	Ks 0.59 0.48 0.21
+	Ns 90
+
+objet 36
+	centre 0.00 -2.75 10.25
+	rayon 1.24
+	Kd 0.11 0.16 0.04
+	Ks 0.50 0.26 0.33
+	Ns 165
+
+objet 37
+	centre -2.50 3.75 13.00
+	rayon 0.73
+	Kd 0.68 0.91 0.69
+	Ks 0.93 0.51 0.64
+	Ns 375
+
+objet 38
+	centre 2.50 -0.50 11.50
+	rayon 0.79
+	Kd 0.33 0.79 0.08
+	Ks 0.27 0.79 0.42
+	Ns 195
+
+objet 39
+	centre 2.50 -1.50 10.00
+	rayon 1.06
+	Kd 0.89 0.66 0.54
+	Ks 0.82 0.19 0.99
+	Ns 105
+
+objet 40
+	centre 1.75 -2.75 11.50
+	rayon 1.04
+	Kd 0.89 0.16 0.52
+	Ks 0.66 0.07 0.56
+	Ns 270
+
+objet 41
+	centre -2.00 1.50 11.75
+	rayon 0.37
+	Kd 0.67 0.72 0.12
+	Ks 0.65 0.50 0.82
+	Ns 360
+
+objet 42
+	centre 0.25 0.50 11.50
+	rayon 0.87
+	Kd 0.92 0.60 1.00
+	Ks 0.23 0.75 0.94
+	Ns 240
+
+objet 43
+	centre -0.25 -2.25 10.75
+	rayon 0.97
+	Kd 0.90 0.29 0.63
+	Ks 0.09 0.46 0.73
+	Ns 315
+
+objet 44
+	centre -1.25 1.50 10.50
+	rayon 0.16
+	Kd 0.15 0.91 0.68
+	Ks 0.57 0.36 0.64
+	Ns 360
+
+objet 45
+	centre 0.25 -1.25 10.00
+	rayon 0.21
+	Kd 0.72 0.41 0.75
+	Ks 0.59 0.97 0.85
+	Ns 375
+
+objet 46
+	centre -1.50 1.50 13.00
+	rayon 0.42
+	Kd 0.43 0.49 0.16
+	Ks 0.23 0.07 0.63
+	Ns 150
+
+objet 47
+	centre 3.25 3.50 10.25
+	rayon 0.48
+	Kd 0.53 0.04 0.31
+	Ks 0.22 0.07 0.79
+	Ns 225
+
+objet 48
+	centre -3.75 2.00 11.50
+	rayon 0.63
+	Kd 0.80 0.08 0.06
+	Ks 0.29 0.54 0.11
+	Ns 165
+
+objet 49
+	centre -0.50 -2.75 11.00
+	rayon 1.02
+	Kd 0.68 0.39 0.69
+	Ks 1.00 0.33 0.97
+	Ns 210
+
+lampe 1
+	position -1.63 -1.53 5.04
+	couleur 0.54 0.86 0.34
+
+lampe 2
+	position 9.26 -7.65 12.29
+	couleur 0.24 0.54 0.04
+
+lampe 3
+	position -10.57 -5.29 15.86
+	couleur 0.04 0.01 0.81
+
+lampe 4
+	position 2.71 9.39 12.29
+	couleur 0.15 0.13 0.17
+
+lampe 5
+	position -3.99 4.22 13.84
+	couleur 0.17 0.68 0.12
+
+lampe 6
+	position 9.38 -1.15 12.56
+	couleur 0.99 0.97 0.26
+
+lampe 7
+	position -4.08 -4.18 10.76
+	couleur 0.64 0.48 0.19
+
+lampe 8
+	position 8.69 8.67 18.30
+	couleur 0.17 0.03 0.93
+
+lampe 9
+	position -1.81 -9.85 16.80
+	couleur 0.50 0.16 0.28
+
+lampe 10
+	position 7.08 -3.58 9.41
+	couleur 0.46 0.33 0.10
+
+lampe 11
+	position 10.95 -6.66 9.74
+	couleur 0.02 0.68 0.13
+
+lampe 12
+	position 9.83 9.29 13.44
+	couleur 0.61 0.75 0.33
+
+lampe 13
+	position -2.05 -7.35 9.32
+	couleur 0.81 0.65 0.88
+
+lampe 14
+	position -7.51 -7.69 12.17
+	couleur 0.31 0.34 0.70
+
+lampe 15
+	position -3.60 -7.24 19.29
+	couleur 0.05 0.74 0.42
+
+lampe 16
+	position -4.86 -4.06 8.40
+	couleur 0.96 0.17 0.68
+
+lampe 17
+	position -7.45 1.60 16.61
+	couleur 0.33 0.66 0.16
+
+lampe 18
+	position -0.36 9.54 13.23
+	couleur 0.87 0.50 0.77
+
+lampe 19
+	position 4.12 -5.03 17.08
+	couleur 0.94 0.84 0.98
+
