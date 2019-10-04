@@ -99,17 +99,8 @@ public class Sphere
         lon *= 180 / (float)Math.PI;
         lat *= 180 / (float)Math.PI;
 
-        // centre du pois le plus proche
-        float pois_lon = Constantes.POIS * Math.round(lon / Constantes.POIS);
-        float pois_lat = Constantes.POIS * Math.round(lat / Constantes.POIS);
-
-        // a quelle distance se trouve-t-on du centre du plus proche pois ?
-        float diff_lon = lon - pois_lon;
-        float diff_lat = lat - pois_lat;
-        float dist_pois = (float)Math.sqrt(diff_lon*diff_lon + diff_lat*diff_lat);
-
-        if (dist_pois < Constantes.POIS * Constantes.POIS_TAILLE) {
-            // je suis dans un pois
+        if ( ( lat >=0 && (int)(lat/Constantes.TRANCHES) %2 == 0 ) || ( lat < 0 && (int)(lat/Constantes.TRANCHES) %2 != 0 )) {
+            // je suis dans une tranche
             return k1;
         }
 
@@ -134,17 +125,8 @@ public class Sphere
         lon *= 180 / (float)Math.PI;
         lat *= 180 / (float)Math.PI;
 
-        // centre du pois le plus proche
-        pois_lon = Constantes.POIS * Math.round(lon / Constantes.POIS);
-        pois_lat = Constantes.POIS * Math.round(lat / Constantes.POIS);
-
-        // a quelle distance se trouve-t-on du centre du plus proche pois ?
-        diff_lon = lon - pois_lon;
-        diff_lat = lat - pois_lat;
-        dist_pois = (float)Math.sqrt(diff_lon*diff_lon + diff_lat*diff_lat);
-
-        if (dist_pois < Constantes.POIS * Constantes.POIS_TAILLE) {
-            // je suis dans un pois
+        if ( ( lat >=0 && (int)(lat/Constantes.TRANCHES) %2 == 0 ) || ( lat < 0 && (int)(lat/Constantes.TRANCHES) %2 != 0 )) {
+            // je suis dans une tranche
             return k2;
         }
 

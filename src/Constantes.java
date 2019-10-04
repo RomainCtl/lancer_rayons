@@ -14,7 +14,7 @@ public final class Constantes
     public static final float CHAMP = 0.25f;
 
     // scène à dessiner dans le canvas
-    public static final String NOM_SCENE = "scenes/scene2.txt";
+    public static final String NOM_SCENE = "scenes/scene5.txt";
 
     // dimensions (initiales) et nom du fichier PNG de sortie
     public static final int LARGEUR_IMAGE = 800;
@@ -24,6 +24,5 @@ public final class Constantes
     // nombre de rayons réfléchis successifs
     public static final int MAX_REFLETS = 5;
 
-    public static final float POIS = 24.0f;
-    public static final float POIS_TAILLE = 0.45f;
+    public static final float TRANCHES = 16.0f;
 }
