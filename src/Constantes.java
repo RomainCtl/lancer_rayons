@@ -23,4 +23,7 @@ public final class Constantes
 
     // nombre de rayons réfléchis successifs
     public static final int MAX_REFLETS = 5;
+
+    // nombre de carre sur le damier
+    public static final float POIS = 22.0f;
 }

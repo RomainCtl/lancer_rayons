@@ -87,6 +87,36 @@ public class Sphere
         // modèle de Lambert = somme des éclairements diffus
         Couleur finale = new Couleur(0, 0, 0);
 
+        // quelle est la couleur du matériaux en ce point
+        Couleur Kd_mod = this.Kd;
+        Couleur Ks_mod = this.Ks;
+
+        // obtenir la longitude et la latitude du point de contact
+        Vecteur N = new Vecteur(centre, incident.contact);
+        N.normaliser(); // rayon = 1
+
+        float lon = (float) Math.atan2(N.z, N.x);
+        float lat = (float) Math.asin(N.y);
+
+        // rad to deg
+        lon *= 180 / (float)Math.PI;
+        lat *= 180 / (float)Math.PI;
+
+        // centre du pois le plus proche
+        float pois_lon = Constantes.POIS * Math.round(lon / Constantes.POIS);
+        float pois_lat = Constantes.POIS * Math.round(lat / Constantes.POIS);
+
+        // a quelle distance se trouve-t-on du centre du plus proche pois ?
+        float diff_lon = lon - pois_lon;
+        float diff_lat = lat - pois_lat;
+        float dist_pois = (float)Math.sqrt(diff_lon*diff_lon + diff_lat*diff_lat);
+
+        if (dist_pois < Constantes.POIS *0.3) {
+            // je suis dans un pois
+            Kd_mod = new Couleur(1, 0, 0);
+            Ks_mod = new Couleur(0, 0, 0);
+        }
+
         // calculer le vecteur N au point de contact avec le rayon
         Vecteur n = new Vecteur(incident.getObjet().centre, incident.contact);
         n.normaliser();
@@ -116,12 +146,12 @@ public class Sphere
                 // calculer dot(L, N) * Kd * couleur de la lampe
                 float nl =  n.dot(l);
                 if (nl > 0) {
-                    finale = Couleur.add(finale, Kd.mul(nl).mul(lampe.getCouleur()));
+                    finale = Couleur.add(finale, Kd_mod.mul(nl).mul(lampe.getCouleur()));
 
                     /// Eclairement Spéculaire
                     // Equation de Phong
                     float rl = r.dot(l);
-                    if (rl > 0) finale = Couleur.add(finale, Kd.mul( (float) Math.pow(rl, this.Ns) ).mul(lampe.getCouleur()));
+                    if (rl > 0) finale = Couleur.add(finale, Kd_mod.mul( (float) Math.pow(rl, this.Ns) ).mul(lampe.getCouleur()));
                 }
             }
         }
@@ -133,10 +163,10 @@ public class Sphere
             // chercher quel objet de la scène le rencontre au plus proche
             if (scene.ChercherIntersection(reflet, this)) {
                 // il y a un objet
-                finale =  finale.add( reflet.getObjet().Phong(scene, reflet, profondeur-1).mul(this.Ks) );
+                finale =  finale.add( reflet.getObjet().Phong(scene, reflet, profondeur-1).mul(Ks_mod) );
             } else {
                 // c'est le ciel
-                finale = finale.add( reflet.Ciel().mul(this.Ks) );
+                finale = finale.add( reflet.Ciel().mul(Ks_mod) );
             }
         }
 
