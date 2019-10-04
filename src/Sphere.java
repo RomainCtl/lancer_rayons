@@ -91,12 +91,10 @@ public class Sphere
         Vecteur N = new Vecteur(centre, contact1);
         N.normaliser();
 
-        // obtenir la longitude et la latitude du point de contact
-        float lon = (float) Math.atan2(N.z, N.x);
+        // obtenir la latitude du point de contact
         float lat = (float) Math.asin(N.y);
 
         // rad to deg
-        lon *= 180 / (float)Math.PI;
         lat *= 180 / (float)Math.PI;
 
         if ( ( lat >=0 && (int)(lat/Constantes.TRANCHES) %2 == 0 ) || ( lat < 0 && (int)(lat/Constantes.TRANCHES) %2 != 0 )) {
@@ -117,12 +115,10 @@ public class Sphere
         N = new Vecteur(centre, contact2);
         N.normaliser();
 
-        // obtenir la longitude et la latitude du point de contact
-        lon = (float) Math.atan2(N.z, N.x);
+        // obtenir la latitude du point de contact
         lat = (float) Math.asin(N.y);
 
         // rad to deg
-        lon *= 180 / (float)Math.PI;
         lat *= 180 / (float)Math.PI;
 
         if ( ( lat >=0 && (int)(lat/Constantes.TRANCHES) %2 == 0 ) || ( lat < 0 && (int)(lat/Constantes.TRANCHES) %2 != 0 )) {
