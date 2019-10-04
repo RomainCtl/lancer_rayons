@@ -18,6 +18,9 @@ public class Sphere
     protected Couleur Ks = new Couleur();
     protected float Ns = 0.0f;
 
+    // true si le rayon est à l'intérieur de la sphére
+    protected boolean interieur;
+
 
     /**
      * constructeur par défaut
@@ -47,6 +50,8 @@ public class Sphere
      */
     public float Intersection(Rayon incident)
     {
+        this.interieur = false;
+
         // calculer B et C
         // a vaut 1 car nous avons normalise le vecteur (xv² + yv² + zv²)
         Vecteur cp = new Vecteur(this.centre, incident.P);
@@ -68,8 +73,82 @@ public class Sphere
         if (k1 <= 0) k1 = Constantes.INFINI;
         if (k2 <= 0) k2 = Constantes.INFINI;
 
-        if (k1 < k2) return k1;
-        else return k2;
+        // mettre la plus petite des distances dans k1
+        if (k1 > k2) {
+            float tmp = k2;
+            k2 = k1;
+            k1 = tmp;
+        }
+
+        if (k1 >= Constantes.INFINI) return Constantes.INFINI;
+
+        this.interieur = (k2 >= Constantes.INFINI);
+
+        // on a peut etre un point de contact à la distance k1
+        Point contact1 = incident.P.add(incident.V.mul(k1));
+
+        // calcul du vecteur normal
+        Vecteur N = new Vecteur(centre, contact1);
+        N.normaliser();
+
+        // obtenir la longitude et la latitude du point de contact
+        float lon = (float) Math.atan2(N.z, N.x);
+        float lat = (float) Math.asin(N.y);
+
+        // rad to deg
+        lon *= 180 / (float)Math.PI;
+        lat *= 180 / (float)Math.PI;
+
+        // centre du pois le plus proche
+        float pois_lon = Constantes.POIS * Math.round(lon / Constantes.POIS);
+        float pois_lat = Constantes.POIS * Math.round(lat / Constantes.POIS);
+
+        // a quelle distance se trouve-t-on du centre du plus proche pois ?
+        float diff_lon = lon - pois_lon;
+        float diff_lat = lat - pois_lat;
+        float dist_pois = (float)Math.sqrt(diff_lon*diff_lon + diff_lat*diff_lat);
+
+        if (dist_pois < Constantes.POIS * Constantes.POIS_TAILLE) {
+            // je suis dans un pois
+            return k1;
+        }
+
+        this.interieur = true;
+
+        /// pareil avec k2
+
+        if (k2 >= Constantes.INFINI) return Constantes.INFINI;
+
+        // on a peut etre un point de contact à la distance k2
+        Point contact2 = incident.P.add(incident.V.mul(k2));
+
+        // calcul du vecteur normal
+        N = new Vecteur(centre, contact2);
+        N.normaliser();
+
+        // obtenir la longitude et la latitude du point de contact
+        lon = (float) Math.atan2(N.z, N.x);
+        lat = (float) Math.asin(N.y);
+
+        // rad to deg
+        lon *= 180 / (float)Math.PI;
+        lat *= 180 / (float)Math.PI;
+
+        // centre du pois le plus proche
+        pois_lon = Constantes.POIS * Math.round(lon / Constantes.POIS);
+        pois_lat = Constantes.POIS * Math.round(lat / Constantes.POIS);
+
+        // a quelle distance se trouve-t-on du centre du plus proche pois ?
+        diff_lon = lon - pois_lon;
+        diff_lat = lat - pois_lat;
+        dist_pois = (float)Math.sqrt(diff_lon*diff_lon + diff_lat*diff_lat);
+
+        if (dist_pois < Constantes.POIS * Constantes.POIS_TAILLE) {
+            // je suis dans un pois
+            return k2;
+        }
+
+        return Constantes.INFINI;
     }
 
 
@@ -90,6 +169,7 @@ public class Sphere
         // calculer le vecteur N au point de contact avec le rayon
         Vecteur n = new Vecteur(incident.getObjet().centre, incident.contact);
         n.normaliser();
+        if (this.interieur) n = n.neg();
 
         /// Calculer le mirrior de -V par rapport à N
         // (on le calcul 1 fois, alors que si on devait calculer le mirroir de L, on aurait du le refaire à chaque iteration)

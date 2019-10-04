@@ -23,4 +23,7 @@ public final class Constantes
 
     // nombre de rayons réfléchis successifs
     public static final int MAX_REFLETS = 5;
+
+    public static final float POIS = 24.0f;
+    public static final float POIS_TAILLE = 0.45f;
 }
