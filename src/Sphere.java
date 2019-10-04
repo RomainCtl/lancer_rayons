@@ -90,13 +90,14 @@ public class Sphere
         // quelle est la couleur du matériaux en ce point
         Couleur Kd_mod = this.Kd;
         Couleur Ks_mod = this.Ks;
+        
+        // calculer le vecteur N au point de contact avec le rayon
+        Vecteur n = new Vecteur(incident.getObjet().centre, incident.contact);
+        n.normaliser();
 
         // obtenir la longitude et la latitude du point de contact
-        Vecteur N = new Vecteur(centre, incident.contact);
-        N.normaliser(); // rayon = 1
-
-        float lon = (float) Math.atan2(N.z, N.x);
-        float lat = (float) Math.asin(N.y);
+        float lon = (float) Math.atan2(n.z, n.x);
+        float lat = (float) Math.asin(n.y);
 
         // rad to deg
         lon *= 180 / (float)Math.PI;
@@ -116,10 +117,6 @@ public class Sphere
             Kd_mod = new Couleur(1, 0, 0);
             Ks_mod = new Couleur(0, 0, 0);
         }
-
-        // calculer le vecteur N au point de contact avec le rayon
-        Vecteur n = new Vecteur(incident.getObjet().centre, incident.contact);
-        n.normaliser();
 
         /// Calculer le mirrior de -V par rapport à N
         // (on le calcul 1 fois, alors que si on devait calculer le mirroir de L, on aurait du le refaire à chaque iteration)
