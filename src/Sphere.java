@@ -87,16 +87,13 @@ public class Sphere
         // modèle de Lambert = somme des éclairements diffus
         Couleur finale = new Couleur(0, 0, 0);
 
-        // quelle est la couleur du matériaux en ce point
-        Couleur Kd_mod = this.Kd;
-        Couleur Ks_mod = this.Ks;
+        // calculer le vecteur N au point de contact avec le rayon
+        Vecteur n = new Vecteur(incident.getObjet().centre, incident.contact);
+        n.normaliser();
 
         // obtenir la longitude et la latitude du point de contact
-        Vecteur N = new Vecteur(centre, incident.contact);
-        N.normaliser(); // rayon = 1
-
-        float lon = (float) Math.atan2(N.z, N.x);
-        float lat = (float) Math.asin(N.y);
+        float lon = (float) Math.atan2(n.z, n.x);
+        float lat = (float) Math.asin(n.y);
 
         // rad to deg
         lon *= 180 / (float)Math.PI;
@@ -112,14 +109,25 @@ public class Sphere
         float dist_pois = (float)Math.sqrt(diff_lon*diff_lon + diff_lat*diff_lat);
 
         if (dist_pois < Constantes.POIS *0.3) {
-            // je suis dans un pois
-            Kd_mod = new Couleur(1, 0, 0);
-            Ks_mod = new Couleur(0, 0, 0);
-        }
+            // recalculer le vecteur normal pour simuler une bosse
+            // deg to rad
+            pois_lat *= (float)Math.PI / 180;
+            pois_lon *= (float)Math.PI / 180;
 
-        // calculer le vecteur N au point de contact avec le rayon
-        Vecteur n = new Vecteur(incident.getObjet().centre, incident.contact);
-        n.normaliser();
+            // centre de la bosse
+            double coslat = Math.cos(pois_lat);
+            float pois_x = (float)(coslat * Math.cos(pois_lon)) * 0.7f;
+            float pois_y = (float) Math.sin(pois_lat)           * 0.7f;
+            float pois_z = (float)(coslat * Math.sin(pois_lon)) * 0.7f;
+
+            // nouvelle normale
+            n = new Vecteur(
+                n.x - pois_x,
+                n.y - pois_y,
+                n.z - pois_z
+            );
+            n.normaliser();
+        }
 
         /// Calculer le mirrior de -V par rapport à N
         // (on le calcul 1 fois, alors que si on devait calculer le mirroir de L, on aurait du le refaire à chaque iteration)
@@ -146,12 +154,12 @@ public class Sphere
                 // calculer dot(L, N) * Kd * couleur de la lampe
                 float nl =  n.dot(l);
                 if (nl > 0) {
-                    finale = Couleur.add(finale, Kd_mod.mul(nl).mul(lampe.getCouleur()));
+                    finale = Couleur.add(finale, this.Kd.mul(nl).mul(lampe.getCouleur()));
 
                     /// Eclairement Spéculaire
                     // Equation de Phong
                     float rl = r.dot(l);
-                    if (rl > 0) finale = Couleur.add(finale, Kd_mod.mul( (float) Math.pow(rl, this.Ns) ).mul(lampe.getCouleur()));
+                    if (rl > 0) finale = Couleur.add(finale, this.Kd.mul( (float) Math.pow(rl, this.Ns) ).mul(lampe.getCouleur()));
                 }
             }
         }
@@ -163,10 +171,10 @@ public class Sphere
             // chercher quel objet de la scène le rencontre au plus proche
             if (scene.ChercherIntersection(reflet, this)) {
                 // il y a un objet
-                finale =  finale.add( reflet.getObjet().Phong(scene, reflet, profondeur-1).mul(Ks_mod) );
+                finale =  finale.add( reflet.getObjet().Phong(scene, reflet, profondeur-1).mul(this.Ks) );
             } else {
                 // c'est le ciel
-                finale = finale.add( reflet.Ciel().mul(Ks_mod) );
+                finale = finale.add( reflet.Ciel().mul(this.Ks) );
             }
         }
 
