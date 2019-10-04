@@ -102,17 +102,12 @@ public class Sphere
         lon *= 180 / (float)Math.PI;
         lat *= 180 / (float)Math.PI;
 
-        // centre du pois le plus proche
-        float pois_lon = Constantes.POIS * Math.round(lon / Constantes.POIS);
-        float pois_lat = Constantes.POIS * Math.round(lat / Constantes.POIS);
+        // supprimer les nombre negatif
+        lon += 180;
+        lat += 90;
 
-        // a quelle distance se trouve-t-on du centre du plus proche pois ?
-        float diff_lon = lon - pois_lon;
-        float diff_lat = lat - pois_lat;
-        float dist_pois = (float)Math.sqrt(diff_lon*diff_lon + diff_lat*diff_lat);
-
-        if (dist_pois < Constantes.POIS *0.3) {
-            // je suis dans un pois
+        if (( (int)(lon/Constantes.POIS) + (int)(lat/Constantes.POIS)) %2 == 0) {
+            // je suis dans un carre
             Kd_mod = new Couleur(1, 0, 0);
             Ks_mod = new Couleur(0, 0, 0);
         }
