@@ -116,15 +116,15 @@ public class Sphere
 
             // centre de la bosse
             double coslat = Math.cos(pois_lat);
-            float pois_x = (float)(coslat * Math.cos(pois_lon)) * 0.7f;
-            float pois_y = (float) Math.sin(pois_lat)           * 0.7f;
-            float pois_z = (float)(coslat * Math.sin(pois_lon)) * 0.7f;
+            float pois_x = (float)(coslat * Math.cos(pois_lon)) * 1.3f;
+            float pois_y = (float) Math.sin(pois_lat)           * 1.3f;
+            float pois_z = (float)(coslat * Math.sin(pois_lon)) * 1.3f;
 
             // nouvelle normale
             n = new Vecteur(
-                n.x - pois_x,
-                n.y - pois_y,
-                n.z - pois_z
+                pois_x - n.x,
+                pois_y - n.y,
+                pois_z - n.z
             );
             n.normaliser();
         }
